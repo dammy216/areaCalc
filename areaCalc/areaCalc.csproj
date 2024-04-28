@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaCalclator.cs" />
     <Compile Include="AreaManager.cs" />
     <Compile Include="BaseArea.cs" />
     <Compile Include="Circle.cs" />

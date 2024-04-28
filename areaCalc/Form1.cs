@@ -29,10 +29,8 @@ namespace areaCalc
                 item.SubItems.Add(subItem);
                 listView.Items.Add(item);
 
-                double total = 0;
-                total += m.AreaValue();
-                totalLabel.Text = total.ToString();
             }
+            totalLabel.Text = AreaCalculator.CalculateTotalArea(manager.Areas).ToString();
         }
     }
 }
