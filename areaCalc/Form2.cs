@@ -4,7 +4,8 @@ namespace areaCalc
 {
     public partial class Form2 : Form
     {
-        private AreaManager areaManager = new AreaManager();
+        //入力された値を一時保存する
+        public BaseArea ResultArea { get; private set; }
 
         public Form2()
         {
@@ -17,15 +18,13 @@ namespace areaCalc
             if (double.TryParse(inputLength.Text, out double number))
             {
                 if (squareRadio.Checked)
-                    areaManager.Add(new Square(number));
+                    ResultArea = new Square(number);
 
-                if (circleRadio.Checked)
-                    areaManager.Add(new Circle(number));
+                if (triangleRadio.Checked)
+                    ResultArea = new Triangle(number);
             }
 
-            Form1 form = new Form1();  // 新しいForm1インスタンスを作成
-            form.AddFoodItem(areaManager);
-            form.ShowDialog();
+            DialogResult = DialogResult.OK;
         }
 
         private void cancelButton_Click(object sender, System.EventArgs e)

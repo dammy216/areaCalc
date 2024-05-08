@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.squareRadio = new System.Windows.Forms.RadioButton();
-            this.circleRadio = new System.Windows.Forms.RadioButton();
+            this.triangleRadio = new System.Windows.Forms.RadioButton();
             this.inputLength = new System.Windows.Forms.TextBox();
             this.calcButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -46,16 +46,16 @@
             this.squareRadio.Text = "四角形";
             this.squareRadio.UseVisualStyleBackColor = true;
             // 
-            // circleRadio
+            // triangleRadio
             // 
-            this.circleRadio.AutoSize = true;
-            this.circleRadio.Location = new System.Drawing.Point(411, 193);
-            this.circleRadio.Name = "circleRadio";
-            this.circleRadio.Size = new System.Drawing.Size(35, 16);
-            this.circleRadio.TabIndex = 1;
-            this.circleRadio.TabStop = true;
-            this.circleRadio.Text = "円";
-            this.circleRadio.UseVisualStyleBackColor = true;
+            this.triangleRadio.AutoSize = true;
+            this.triangleRadio.Location = new System.Drawing.Point(411, 193);
+            this.triangleRadio.Name = "triangleRadio";
+            this.triangleRadio.Size = new System.Drawing.Size(59, 16);
+            this.triangleRadio.TabIndex = 1;
+            this.triangleRadio.TabStop = true;
+            this.triangleRadio.Text = "三角形";
+            this.triangleRadio.UseVisualStyleBackColor = true;
             // 
             // inputLength
             // 
@@ -92,7 +92,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.calcButton);
             this.Controls.Add(this.inputLength);
-            this.Controls.Add(this.circleRadio);
+            this.Controls.Add(this.triangleRadio);
             this.Controls.Add(this.squareRadio);
             this.Name = "Form2";
             this.Text = "Form2";
@@ -104,7 +104,7 @@
         #endregion
 
         private System.Windows.Forms.RadioButton squareRadio;
-        private System.Windows.Forms.RadioButton circleRadio;
+        private System.Windows.Forms.RadioButton triangleRadio;
         private System.Windows.Forms.TextBox inputLength;
         private System.Windows.Forms.Button calcButton;
         private System.Windows.Forms.Button cancelButton;

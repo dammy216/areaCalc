@@ -5,6 +5,7 @@ namespace areaCalc
 {
     public partial class Form1 : Form
     {
+        private AreaManager _areaManager = new AreaManager();
         public Form1()
         {
             InitializeComponent();
@@ -13,24 +14,45 @@ namespace areaCalc
         private void calcButton_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
-            form2.ShowDialog();
+            if (form2.ShowDialog() == DialogResult.OK)
+            {
+                var area = form2.ResultArea;
+                _areaManager.Add(area); //本当のモデルに追加
+                UpdateListView();
+            }
         }
 
-        public void AddFoodItem(AreaManager manager)
+        //リストビューの更新
+        public void UpdateListView()
         {
-            foreach (var m in manager.Areas)
+            listView.Items.Clear();
+            foreach (var area in _areaManager.Areas)
             {
-                ListViewItem item = new ListViewItem();
-                item.Text = m.Name;
-
-                ListViewItem.ListViewSubItem subItem = new ListViewItem.ListViewSubItem();
-                subItem.Text = m.AreaValue().ToString();
-
-                item.SubItems.Add(subItem);
+                //リストビューの項目数とstring配列の長さが同じであればそのまま表示できる
+                ListViewItem item = new ListViewItem(_areaManager.GetListViewItem(area));  //表示用のリストでリストビューを作成
                 listView.Items.Add(item);
-
             }
-            totalLabel.Text = AreaCalculator.CalculateTotalArea(manager.Areas).ToString();
+            totalLabel.Text = $"TotalArea:{AreaCalculator.CalculateTotalArea(listView).ToString()}";
+        }
+
+        //丸める処理
+        public void decimalButton_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(RoundInput.Text, out int digit) && digit <= 15)
+            {
+                foreach (ListViewItem item in listView.Items)
+                {
+                    if (item.SubItems.Count > 0)
+                    {
+                        var area = _areaManager.Areas[item.Index];
+                        //モデルの値で丸めているので、桁で2を選んだ後も3で丸める計算を再度行える
+                        string roundedArea = _areaManager.RoundDecimal(area.AreaValue(), digit);    //rounddecimalがstringを返すからstringに渡す
+
+                        item.SubItems[1].Text = roundedArea;
+                    }
+                }
+                totalLabel.Text = _areaManager.RoundDecimal(AreaCalculator.CalculateTotalArea(listView), digit);
+            }
         }
     }
 }
