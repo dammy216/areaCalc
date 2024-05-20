@@ -54,5 +54,19 @@ namespace areaCalc
                 totalLabel.Text = _areaManager.RoundDecimal(AreaCalculator.CalculateTotalArea(listView), digit);
             }
         }
+
+        //編集
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = listView.SelectedItems[0].Index;
+
+            Form2 form2 = new Form2(_areaManager.GetArea(selectedIndex));
+            if (form2.ShowDialog() == DialogResult.OK)
+            {
+                var area = form2.ResultArea;
+                _areaManager.Edit(selectedIndex, area); //本当のモデルに追加
+                UpdateListView();
+            }
+        }
     }
 }

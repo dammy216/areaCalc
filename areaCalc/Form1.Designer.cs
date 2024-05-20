@@ -35,6 +35,7 @@
             this.calcButton = new System.Windows.Forms.Button();
             this.decimalButton = new System.Windows.Forms.Button();
             this.RoundInput = new System.Windows.Forms.TextBox();
+            this.editButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView
@@ -96,11 +97,22 @@
             this.RoundInput.Size = new System.Drawing.Size(100, 19);
             this.RoundInput.TabIndex = 4;
             // 
+            // editButton
+            // 
+            this.editButton.Location = new System.Drawing.Point(620, 280);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(75, 23);
+            this.editButton.TabIndex = 5;
+            this.editButton.Text = "編集";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.RoundInput);
             this.Controls.Add(this.decimalButton);
             this.Controls.Add(this.calcButton);
@@ -122,6 +134,7 @@
         private System.Windows.Forms.Button calcButton;
         private System.Windows.Forms.Button decimalButton;
         private System.Windows.Forms.TextBox RoundInput;
+        private System.Windows.Forms.Button editButton;
     }
 }
 

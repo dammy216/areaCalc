@@ -1,6 +1,6 @@
 ﻿namespace areaCalc
 {
-    internal class Square : BaseArea
+    internal class Square : BaseArea, ILength
     {
         private double _length;
         public Square(double length)
@@ -9,6 +9,8 @@
         }
 
         public override string Name => "四角形";
+
+        public double Length => _length;
 
         public override double AreaValue()
         {

@@ -2,9 +2,10 @@
 
 namespace areaCalc
 {
-    internal class Triangle : BaseArea
+    internal class Triangle : BaseArea, ILength
     {
         private double _length;
+
 
         public Triangle(double length)
         {
@@ -12,6 +13,8 @@ namespace areaCalc
         }
 
         public override string Name => "三角形";
+
+        public double Length => _length;
 
         public override double AreaValue()
         {

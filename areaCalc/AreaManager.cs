@@ -32,5 +32,15 @@ namespace areaCalc
             string[] areas = { area.Name, area.AreaValue().ToString() };
             return areas;
         }
+
+        public void Edit(int index, BaseArea area)
+        {
+            _area[index] = area;
+        }
+
+        public BaseArea GetArea(int index)
+        {
+            return _area[index];
+        }
     }
 }

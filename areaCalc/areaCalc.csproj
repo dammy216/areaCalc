@@ -49,6 +49,7 @@
     <Compile Include="AreaCalclator.cs" />
     <Compile Include="AreaManager.cs" />
     <Compile Include="BaseArea.cs" />
+    <Compile Include="ILength.cs" />
     <Compile Include="Triangle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
