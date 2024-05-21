@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
 
 namespace areaCalc
 {
@@ -41,6 +45,39 @@ namespace areaCalc
         public BaseArea GetArea(int index)
         {
             return _area[index];
+        }
+
+        // CSV読み込み
+        public void LoadFromCsv(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("shift_jis")))
+                {
+                    string line;
+                    while (sr.Peek() > -1)
+                    {
+                        line = sr.ReadLine();
+                        string[] parts = line.Split(',');
+                        string name = parts[0];
+                        double.TryParse(parts[1], out double areaValue);
+
+                        BaseArea area = new Concrete(name, areaValue);
+                        _area.Add(area);
+                    }
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException($"The file {filePath} does not exist.");
+            }
+        }
+
+        // CSV保存
+        public void SaveToCsv(string filePath)
+        {
+            var lines = _area.Select(a => $"{a.Name},{a.AreaValue()}").ToArray();
+            File.WriteAllLines(filePath, lines, Encoding.GetEncoding("shift_jis"));
         }
     }
 }

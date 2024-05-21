@@ -9,6 +9,7 @@ namespace areaCalc
         public Form1()
         {
             InitializeComponent();
+            LoadCsv();
         }
 
         private void calcButton_Click(object sender, EventArgs e)
@@ -67,6 +68,22 @@ namespace areaCalc
                 _areaManager.Edit(selectedIndex, area); //本当のモデルに追加
                 UpdateListView();
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveCsv();
+        }
+
+        private void LoadCsv()
+        {
+            _areaManager.LoadFromCsv("D:\\Programing\\C#\\CSharpTutorial\\areaCalc\\area.csv");
+            UpdateListView();
+        }
+
+        private void SaveCsv()
+        {
+            _areaManager.SaveToCsv("D:\\Programing\\C#\\CSharpTutorial\\areaCalc\\area.csv");
         }
     }
 }

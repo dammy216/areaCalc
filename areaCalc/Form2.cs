@@ -15,7 +15,7 @@ namespace areaCalc
         public Form2(BaseArea area)
         {
             InitializeComponent();
-
+            //デフォルトの場合
             if (area == null)
             {
                 squareRadio.Checked = true;
