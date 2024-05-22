@@ -67,17 +67,15 @@ namespace areaCalc
                     }
                 }
             }
-            else
-            {
-                throw new FileNotFoundException($"The file {filePath} does not exist.");
-            }
         }
 
         // CSV保存
         public void SaveToCsv(string filePath)
         {
+
             var lines = _area.Select(a => $"{a.Name},{a.AreaValue()}").ToArray();
             File.WriteAllLines(filePath, lines, Encoding.GetEncoding("shift_jis"));
+
         }
     }
 }

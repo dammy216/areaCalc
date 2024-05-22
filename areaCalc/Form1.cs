@@ -77,13 +77,13 @@ namespace areaCalc
 
         private void LoadCsv()
         {
-            _areaManager.LoadFromCsv("D:\\Programing\\C#\\CSharpTutorial\\areaCalc\\area.csv");
+            _areaManager.LoadFromCsv("D:\\Programing\\C#\\CSharpTutorial\\areaCalc\\dummy.csv");
             UpdateListView();
         }
 
         private void SaveCsv()
         {
-            _areaManager.SaveToCsv("D:\\Programing\\C#\\CSharpTutorial\\areaCalc\\area.csv");
+            _areaManager.SaveToCsv("D:\\Programing\\C#\\CSharpTutorial\\areaCalc\\dummy.csv");
         }
     }
 }
